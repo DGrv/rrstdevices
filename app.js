@@ -22,6 +22,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 
+console.log("API_KEY:", process.env.API_KEY);
+
+
+
 async function fetchData(DeviceID) {
   async function apiRequest(token) {
     const response = await fetch('https://rest.devices.raceresult.com/customers/846/devices/' + DeviceID, {
@@ -44,7 +48,6 @@ async function fetchData(DeviceID) {
     // return await responseData; // Return API response
   }
 
-  console.log("API_KEY:", process.env.API_KEY);
 
   async function getNewToken() {
     const authResponse = await fetch('https://rest.devices.raceresult.com/token', {
