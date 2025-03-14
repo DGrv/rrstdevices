@@ -44,6 +44,8 @@ async function fetchData(DeviceID) {
     // return await responseData; // Return API response
   }
 
+  console.log("API_KEY:", process.env.API_KEY);
+
   async function getNewToken() {
     const authResponse = await fetch('https://rest.devices.raceresult.com/token', {
       method: 'POST',
