@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 
-console.log("API_KEY:", process.env.API_KEY);
+// console.log("API_KEY:", process.env.API_KEY);
 
 
 
@@ -93,8 +93,12 @@ async function fetchData(DeviceID) {
 // ======= NEW API ROUTE TO FETCH JSON FROM AN EXTERNAL API =======
 app.post('/api/get-data', async (req, res) => {
 
+  console.log("Received data:", req.body); // Log incoming data
+  console.log("someonetry to connect")
+
   try {
     let boxid = "T-20346";
+    console.log("Trying to run fetchData")
     let data = await fetchData(boxid);
 
     console.log('API Response:', data);
