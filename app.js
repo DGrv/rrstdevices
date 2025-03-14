@@ -93,7 +93,7 @@ async function fetchData(DeviceID) {
 // ======= NEW API ROUTE TO FETCH JSON FROM AN EXTERNAL API =======
 app.post('/api/get-data', async (req, res) => {
 
-  console.log("Received data:", req.body); // Log incoming data
+  console.log("Received data:", req.body)
   console.log("someonetry to connect")
 
   try {
