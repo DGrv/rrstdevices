@@ -88,28 +88,18 @@ async function fetchData(DeviceID) {
 // ======= NEW API ROUTE TO FETCH JSON FROM AN EXTERNAL API =======
 app.post('/api/get-data', async (req, res) => {
 
+  try {
+    let boxid = "T-20346";
+    let data = await fetchData(boxid);
 
-      // Run the function
-      // fetchData("D-5022").then(data => console.log('API Response:', data)).catch(error => console.error('Error:', error));
+    console.log('API Response:', data);
 
-      // setInterval(async () => {
-        try {
-
-        var boxid = "T-20346"
-          await fetchData(boxid).then(data => {
-            console.log('API Response:', data);
-            // addMarkerToLeafletMap(data.Latitude, data.Longitude, data.Flag, "https://cdn-icons-png.flaticon.com/128/2583/2583381.png", "https://cdn-icons-png.flaticon.com/512/2583/2583364.png" );
-          }).catch(error => console.error('Error:', error));
-
-
-
-
-        } catch (error) {
-          console.error('Error during periodic fetch:', error);
-        }
-      // }, 5000);  // 5000 milliseconds = 5 seconds
-
-
+    // Send the fetched data as a response to the client
+    res.json({ success: true, position: data });
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
 
 });
 
